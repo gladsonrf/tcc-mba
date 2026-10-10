@@ -1,0 +1,19 @@
+produto,ano,country,peso,tipo
+KCl,2025,Rússia,45.3,direto
+KCl,2025,Canadá,37.7,direto
+KCl,2025,Israel,8.0,direto
+KCl,2025,Alemanha,3.9,direto
+KCl,2025,Turcomenistão,2.5,proxy
+KCl,2025,Jordânia,1.6,proxy
+MAP,2025,Rússia,45.9,direto
+MAP,2025,Arábia Saudita,24.8,direto
+MAP,2025,Marrocos,22.6,proxy
+MAP,2025,China,3.4,direto
+MAP,2025,Estados Unidos,2.0,direto
+MAP,2025,Lituânia,1.3,global
+Ureia,2025,Nigéria,23.3,global
+Ureia,2025,Rússia,16.7,direto
+Ureia,2025,Omã,15.6,proxy
+Ureia,2025,Catar,12.8,proxy
+Ureia,2025,Argélia,9.0,proxy
+Ureia,2025,Venezuela,5.2,direto

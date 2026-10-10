@@ -22,7 +22,7 @@ importação de fertilizantes no Brasil usando indicadores de risco geopolítico
 │   ├── processed/      # base analítica: painel_mensal.csv
 │   └── external/       # planilha de culturas e calendário agrícola
 ├── src/                # scripts do pipeline (rodar em ordem ou via run_all.py)
-├── notebooks/          # 01_analise_exploratoria.ipynb; próximos: modelagem
+├── notebooks/          # 01_analise_exploratoria, 02_gpr_e_baselines; próximos: modelos com exógenas
 ├── reports/
 │   ├── figures/        # figuras do relatório
 │   └── tables/         # tabelas de resultados
@@ -40,6 +40,8 @@ importação de fertilizantes no Brasil usando indicadores de risco geopolítico
 pip install -r requirements.txt
 cd src
 python run_all.py
+python 09_baselines.py --prever todos
+python 09_baselines.py --avaliar
 ```
 
 | Script | O que faz | Saída |
@@ -51,6 +53,8 @@ python run_all.py
 | `05_montar_base.py` | Junta tudo em um painel mensal | `data/processed/painel_mensal.csv` |
 | `06_exportacoes_agro.py` | Exportações dos principais produtos do agro | `data/raw/comexstat/exportacao_agro_anual.csv` |
 | `07_planilha_culturas.py` | Planilha de culturas, calendário agrícola e NCMs | `data/external/culturas_fertilizantes.xlsx` |
+| `08_gpr_ponderado.py` | Risco geopolítico ponderado pela origem das importações, por fertilizante | `data/processed/gpr_ponderado.csv` |
+| `09_baselines.py` | Baselines (ingênuo, ingênuo sazonal, ARIMA) com origem móvel: `--prever todos` e depois `--avaliar` | `reports/tables/03_*.csv` |
 
 Observações:
 - A API do ComexStat limita requisições; o script espera e usa cache (`data/interim/comexstat_cache`), então pode ser
@@ -77,7 +81,8 @@ Nenhuma base contém dados pessoais.
 - [x] Coleta de dados (pipeline reprodutível)
 - [x] Planilha de culturas e calendário agrícola
 - [x] Análise exploratória: quebras estruturais, sazonalidade, choques por produto (`notebooks/01_analise_exploratoria.ipynb`)
-- [ ] Modelagem e validação (origem móvel, h = 1, 2, 3)
+- [x] GPR ponderado pela origem e baselines com origem móvel (`notebooks/02_gpr_e_baselines.ipynb`)
+- [ ] Modelos com exógenas (SARIMAX, LASSO, gradient boosting, LSTM)
 - [ ] Relatório de viabilidade dos dados (semana 3)
 - [ ] Versão para qualificação (semana 8)
 - [ ] Versão final (semana 10)

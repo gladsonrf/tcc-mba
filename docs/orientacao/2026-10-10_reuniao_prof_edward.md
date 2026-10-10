@@ -62,6 +62,23 @@ Atenção: a ureia tem um valor atípico em 2003 (queda isolada) que gera a fals
 |---|---|---|
 | 14/10 | Reunião: validar desenho por fertilizante, regime de volatilidade e janela de compra | [ ] |
 | 14/10 | Pedir datas de qualificação e defesa | [ ] |
-| Semana 2 | GPR ponderado pela origem das importações (por produto) | [ ] |
-| Semana 2 | Baselines (ingênuo, ARIMA) com validação por origem móvel | [ ] |
+| Semana 2 | GPR ponderado pela origem das importações (por produto) | [x] src/08_gpr_ponderado.py |
+| Semana 2 | Baselines (ingênuo, ARIMA) com validação por origem móvel | [x] src/09_baselines.py, notebooks/02 |
 | Semana 3 | Relatório de viabilidade dos dados | [ ] |
+
+## Resultados da semana 2 (notebooks/02_gpr_e_baselines.ipynb)
+
+- **GPR ponderado:** origens 2025 — KCl: Rússia 45%, Canadá 38%; ureia: Nigéria 23%, Omã + Catar 28%, Rússia 17%;
+  MAP: Rússia 46%, Arábia Saudita 25%, Marrocos 23%. Cobertura com índice próprio: 83% (KCl), 75% (MAP), 65% (ureia).
+  Correlação com a variação futura do preço é baixa (≈ 0,1), um pouco maior que a do GPR global para ureia e KCl.
+- **Baselines (origens 2010-01 a 2026-05):** ARIMA tem RMSE 3% a 19% menor que o ingênuo; ganho significativo (DM, 5%)
+  em KCl h = 1–2, MAP h = 1–3 e ureia h = 2. Ingênuo sazonal é 2 a 8 vezes pior. Nos choques o erro sobe 3 a 5 vezes;
+  em Ormuz (ureia, h = 3) o ARIMA não supera o ingênuo. **ARIMA é a régua a bater.**
+
+## Próximos passos (semanas 3–5)
+
+| Prazo | Ação | Status |
+|---|---|---|
+| Semana 3 | Relatório de viabilidade dos dados (dados, EDA, GPR, baselines) | [ ] |
+| Semana 3–4 | SARIMAX com preço internacional defasado, câmbio e GPR ponderado | [ ] |
+| Semana 4–5 | LASSO e gradient boosting (mesma validação); LSTM como comparação | [ ] |
