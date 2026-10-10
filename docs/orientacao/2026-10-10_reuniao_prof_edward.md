@@ -30,11 +30,11 @@ Apresentação do pré-projeto (reunião coletiva). Próximas reuniões individu
 
 | Prazo | Ação | Status |
 |---|---|---|
-| 12/10 | Enviar convite: quarta 14/10, 9h (alternativa: sábado 17/10) | [ ] |
-| 12/10 | Subir repositório no GitHub e enviar o link | [ ] |
+| 12/10 | Enviar convite: quarta 14/10, 9h (alternativa: sábado 17/10) | [x] enviado |
+| 12/10 | Subir repositório no GitHub e enviar o link | [x] https://github.com/gladsonrf/tcc-mba |
 | 14/10 | Planilha de culturas (`data/external/culturas_fertilizantes.xlsx`) | [x] |
 | 14/10 | Desagregar séries por NCM (ureia, KCl, MAP) | [x] dados baixados |
-| 14/10 | Análise exploratória curta: quebras, sazonalidade, choque por produto | [ ] |
+| 14/10 | Análise exploratória curta: quebras, sazonalidade, choque por produto | [x] notebooks/01_analise_exploratoria.ipynb |
 | 14/10 | Atualizar slides (Plano Safra, produtos, quebras, cronograma) | [x] |
 | Semana 2 | GPR ponderado pela origem; métrica de erro na janela de compra | [ ] |
 | Semana 3 | Relatório de viabilidade dos dados | [ ] |
@@ -43,3 +43,25 @@ Apresentação do pré-projeto (reunião coletiva). Próximas reuniões individu
 
 - Validar: um modelo por fertilizante + robustez da soja (KCl e MAP na janela pré-plantio).
 - Pedir datas de qualificação e defesa.
+
+## Resultados da análise exploratória (notebooks/01_analise_exploratoria.ipynb)
+
+| Ponto | Resultado por produto (ureia, KCl, MAP) | Decisão para a modelagem |
+|---|---|---|
+| Choques | 2024–25 vs 2019: ureia +31%, KCl −13%, MAP +64%. Ormuz 2026 (jan→pico): ureia +47%, MAP +29%, KCl +13% | Um modelo por fertilizante |
+| Quebras | Regime de alta volatilidade 2021–set/2023 (KCl ~11%/mês, MAP ~10%) vs ~3% fora dele; ureia volátil desde 2021. Chow (AR(1)) só rejeita em 2008 | Tratar 2021–23 como regime de volatilidade; avaliar erro por regime |
+| Sazonalidade | Preço não sazonal (F: p = 0,40; 0,70; 0,37; STL ≈ 0). Volume na janela de compra: 44–51% do ano | ARIMA (não SARIMA) como baseline; erro ponderado pela janela |
+| Defasagem | Correlação máxima: ureia k = 2 (0,17), KCl k = 2 (0,38), MAP k = 3 (0,59) | Preço internacional defasado 1–3 meses como preditor |
+| Estacionariedade | Log do preço I(1) (ADF não rejeita; KPSS rejeita em nível) | Modelar a 1ª diferença do log |
+
+Atenção: a ureia tem um valor atípico em 2003 (queda isolada) que gera a falsa "volatilidade" de 2001–2003. Tratar como outlier.
+
+## Próximos passos (semana 1–2)
+
+| Prazo | Ação | Status |
+|---|---|---|
+| 14/10 | Reunião: validar desenho por fertilizante, regime de volatilidade e janela de compra | [ ] |
+| 14/10 | Pedir datas de qualificação e defesa | [ ] |
+| Semana 2 | GPR ponderado pela origem das importações (por produto) | [ ] |
+| Semana 2 | Baselines (ingênuo, ARIMA) com validação por origem móvel | [ ] |
+| Semana 3 | Relatório de viabilidade dos dados | [ ] |

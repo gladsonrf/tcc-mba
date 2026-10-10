@@ -1,0 +1,4 @@
+Produto,p-valor F (dummies),Força sazonal STL (0–1),Janela de compra,% do volume na janela
+Ureia,0.404,0,Set–Dez,43.7
+KCl,0.696,0,Mai–Set,50.8
+MAP,0.374,0,Mai–Set,51.3

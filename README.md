@@ -22,7 +22,7 @@ importação de fertilizantes no Brasil usando indicadores de risco geopolítico
 │   ├── processed/      # base analítica: painel_mensal.csv
 │   └── external/       # planilha de culturas e calendário agrícola
 ├── src/                # scripts do pipeline (rodar em ordem ou via run_all.py)
-├── notebooks/          # análise exploratória e modelagem
+├── notebooks/          # 01_analise_exploratoria.ipynb; próximos: modelagem
 ├── reports/
 │   ├── figures/        # figuras do relatório
 │   └── tables/         # tabelas de resultados
@@ -76,7 +76,7 @@ Nenhuma base contém dados pessoais.
 - [x] Pré-projeto apresentado (10/10/2026)
 - [x] Coleta de dados (pipeline reprodutível)
 - [x] Planilha de culturas e calendário agrícola
-- [ ] Análise exploratória: quebras estruturais, sazonalidade, choques por produto
+- [x] Análise exploratória: quebras estruturais, sazonalidade, choques por produto (`notebooks/01_analise_exploratoria.ipynb`)
 - [ ] Modelagem e validação (origem móvel, h = 1, 2, 3)
 - [ ] Relatório de viabilidade dos dados (semana 3)
 - [ ] Versão para qualificação (semana 8)
